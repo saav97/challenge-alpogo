@@ -1,0 +1,113 @@
+.gallery-container {
+    display: flex;
+    width: 100%;
+    height: 75vh;
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar las miniaturas verticalmente */
+    width: 20%;
+    overflow-y: auto; /* Mostrar la barra de scroll */
+    background: #333;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .thumbnail {
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 90%; /* Ajustar el ancho de las miniaturas */
+    aspect-ratio: 4 / 3; /* Hacer las miniaturas rectangulares */
+    border: 2px solid transparent; /* Borde por defecto */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Asegurar que el título esté en la parte inferior */
+    align-items: center;
+    position: relative;
+    transition: border 0.3s, filter 0.3s; /* Añadir transición para el borde y el filtro */
+  }
+  
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .thumbnail .title {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  
+  .thumbnail img.selected {
+    border: 2px solid #fff; /* Borde para la miniatura seleccionada */
+    filter: brightness(0.7); /* Hacer la miniatura seleccionada más oscura */
+  }
+  
+  .main-image-container {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    position: relative;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Flechas de navegación */
+  .arrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+  }
+  
+  .arrow-up {
+    top: 10px; /* Ajuste la posición para que estén siempre visibles */
+  }
+  
+  .arrow-down {
+    bottom: 10px; /* Ajuste la posición para que estén siempre visibles */
+  }
+  @media (max-width: 768px) {
+    .gallery-container {
+      flex-direction: column;
+    }
+    .thumbnails {
+      display: none;
+    }
+    .main-image-container {
+      width: 100%;
+    }
+    .arrow {
+      top: unset;
+      transform: translateY(-50%);
+    }
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
+  }
